@@ -1,10 +1,18 @@
 package game.hero;
 
-public abstract class Hero {
+import game.Fightable;
+
+public class Hero {
 	protected String name;
 	protected int life;
+
+	public Hero (String name, int life) {
+		this.name = name;
+		this.life = life;
+	}
 	
-	public abstract void ability();
+	public void ability(){};
+	public void ability(Fightable enemy){};
 
 	public String getName() {
 		return name;
