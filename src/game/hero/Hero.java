@@ -1,35 +1,90 @@
 package game.hero;
 
-import game.Fightable;
+import javax.swing.plaf.synth.SynthSeparatorUI;
 
-public class Hero {
+import game.Attackable;
+import game.Hurtable;
+import game.WithSpecialAbility;
+import game.card.Card;
+
+public class Hero implements Hurtable, WithSpecialAbility{
 	protected String name;
+	protected int hasMana;
 	protected int life;
+	
+	public void useCard(Card card) {
+		card.useThis();
+	}
 
-	public Hero (String name, int life) {
+	public void setName(String name) {
 		this.name = name;
-		this.life = life;
 	}
 	
-	public void ability(){};
-	public void ability(Fightable enemy){};
-
 	public String getName() {
-		return name;
+		return this.name;
 	}
-
-	public Hero setName(String name) {
-		this.name = name;
+	// setter, getter
+	public int getMana() {
+		return this.hasMana;
+	}
+	
+	public Hero setMana(int mana) {
+		this.hasMana = mana;
 		return this;
 	}
-
-	public int getLife() {
-		return life;
+	
+	public int addMana(int mana) {
+		return this.hasMana += mana;
+	}
+	
+	public int minMana(int mana) {
+		return this.hasMana -= mana;
 	}
 
-	public Hero setLife(int life) {
+	@Override
+	public void setLife(int life) {
 		this.life = life;
-		return this;
+	}
+
+	@Override
+	public int getLife() {
+		return this.life;
+	}
+
+	@Override
+	public void addLife(int life) {
+		this.life += life;
+	}
+
+	@Override
+	public void minLife(int life) {
+		this.life -= life;
+	}
+
+	@Override
+	public void attacked(int damage) {
+		this.life -= damage;
+	}
+
+	@Override
+	public void ability() {
+		
+	}
+
+	@Override
+	public void ability(Hurtable hurtableThing) {
+		
+	}
+
+	@Override
+	public void ability(Attackable attackableThing) {
+		
+	}
+
+	@Override
+	public void die() {
+		//game이 끝나는 메서드 추가.
+		System.out.println(this.name + "은 경기에서 패배했습니다.");
 	}
 	
 }
