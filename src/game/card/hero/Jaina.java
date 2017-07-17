@@ -6,11 +6,12 @@ import game.Hurtable;
 
 public class Jaina extends Hero {
 
-	private int abilityDamage; 
+	final private int MAGIC_POWER = 1; 
 
 	@Override
 	public void ability(Hurtable enemy) {
-		enemy.attacked(abilityDamage);
+		System.out.println("제이나가 화염 작렬을 시전했습니다.");
+		enemy.attacked(MAGIC_POWER);
 	}
 
 }

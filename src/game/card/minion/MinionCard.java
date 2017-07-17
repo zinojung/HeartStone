@@ -1,10 +1,10 @@
-package game.card;
+package game.card.minion;
 
-import game.Attackable;
-import game.Hurtable;
-import game.hero.Hero;
+import game.card.Card;
+import game.interF.Attackable;
+import game.interF.Hurtable;
 
-public class FightableCard extends Card implements Attackable, Hurtable {
+public class MinionCard extends Card implements Attackable, Hurtable {
 
 	protected int life;
 	protected int damage;
@@ -60,8 +60,8 @@ public class FightableCard extends Card implements Attackable, Hurtable {
 	@Override
 	public void attack(Hurtable enemy) {
 		enemy.attacked(damage);
-		if(enemy instanceof FightableCard) {
-			this.life -= ((FightableCard) enemy).getDamage();
+		if(enemy instanceof MinionCard) {
+			this.life -= ((MinionCard) enemy).getDamage();
 		}
 		System.out.println(this.name + "가 공격을 시도했습니다.");
 	}

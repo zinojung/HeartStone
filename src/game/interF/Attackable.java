@@ -1,6 +1,4 @@
-package game;
-
-import game.hero.Hero;
+package game.interF;
 
 public interface Attackable {
 	public void setDamage(int damage);
