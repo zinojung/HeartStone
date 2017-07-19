@@ -1,8 +1,8 @@
-package game.card;
+package game.card.magic;
 
-import game.Attackable;
-import game.Hurtable;
-import game.WithSpecialAbility;
+import game.interF.Attackable;
+import game.interF.Dieable;
+import game.interF.WithSpecialAbility;
 
 public class MagicCard implements WithSpecialAbility{
 
@@ -12,7 +12,7 @@ public class MagicCard implements WithSpecialAbility{
 	}
 
 	@Override
-	public void ability(Hurtable hurtableThing) {
+	public void ability(Dieable hurtableThing) {
 		
 	}
 

@@ -1,13 +1,13 @@
 package game.hero;
 
-import game.Hurtable;
+import game.interF.Dieable;
 
 public class Rexxar extends Hero{
 	
 	final private int MAGIC_POWER = 2;
 	
 	@Override
-	public void ability (Hurtable hero) {
+	public void ability (Dieable hero) {
 		if(!(hero instanceof Hero)) {
 			System.out.println("렉사르는 영웅만 공격할 수 있습니다.");
 			return;

@@ -1,14 +1,15 @@
-package game.card.hero;
+package game.hero;
 
 import game.card.Card;
 import game.interF.Attackable;
+import game.interF.Dieable;
 import game.interF.HasGrade;
-import game.interF.Hurtable;
 import game.interF.WithSpecialAbility;
 
-public class Hero extends Card implements Hurtable, WithSpecialAbility, HasGrade{
-	protected int life;
-	protected String grade;
+public class Hero extends Card implements Dieable, WithSpecialAbility, HasGrade{
+	private int life;
+	private String grade;
+	private boolean deadOrLive;
 
 	@Override
 	public void setLife(int life) {
@@ -31,17 +32,7 @@ public class Hero extends Card implements Hurtable, WithSpecialAbility, HasGrade
 	}
 
 	@Override
-	public void ability(Hurtable hurtableThing) {
-		
-	}
-
-	@Override
-	public void ability(Attackable attackableThing) {
-		
-	}
-
-	@Override
-	public void die() {
+	public void dead () {
 		//game이 끝나는 메서드 추가.
 		System.out.println(this.name + "은 경기에서 패배했습니다.");
 	}
@@ -59,6 +50,18 @@ public class Hero extends Card implements Hurtable, WithSpecialAbility, HasGrade
 	@Override
 	public void heal(int heal) {
 		this.life += heal;
+	}
+
+	@Override
+	public void ability(Dieable hurtableThing) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void ability(Attackable attackableThing) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }

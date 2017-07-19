@@ -5,5 +5,5 @@ public interface Attackable {
 	public int  getDamage();
 	public void addDamage(int damege);
 	public void minDamage(int damege);
-	public void attack(Hurtable enemy);
+	public void attack(Dieable enemy);
 }

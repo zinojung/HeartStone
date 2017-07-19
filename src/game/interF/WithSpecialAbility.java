@@ -1,7 +1,7 @@
-package game;
+package game.interF;
 
 public interface WithSpecialAbility {
 	public void ability();
-	public void ability(Hurtable hurtableThing);
+	public void ability(Dieable hurtableThing);
 	public void ability(Attackable attackableThing);
 }

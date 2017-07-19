@@ -27,4 +27,8 @@ public class Card {
 	public int getMana() {
 		return this.mana;
 	}
+	
+	public Card getCard() {
+		return this;
+	}
 }

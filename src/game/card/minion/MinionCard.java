@@ -2,9 +2,9 @@ package game.card.minion;
 
 import game.card.Card;
 import game.interF.Attackable;
-import game.interF.Hurtable;
+import game.interF.Dieable;
 
-public class MinionCard extends Card implements Attackable, Hurtable {
+public class MinionCard extends Card implements Attackable, Dieable{
 
 	protected int life;
 	protected int damage;
@@ -18,17 +18,6 @@ public class MinionCard extends Card implements Attackable, Hurtable {
 	public int getLife() {
 		return this.life;
 	}
-
-	@Override
-	public void addLife(int heal) {
-		this.life += heal;
-	}
-
-	@Override
-	public void minLife(int damage) {
-		this.life -= damage;
-	}
-
 
 	@Override
 	public void setDamage(int damage) {
@@ -54,24 +43,32 @@ public class MinionCard extends Card implements Attackable, Hurtable {
 	public void attacked(int damage) {
 		this.life -= damage;
 		System.out.println(this.name + "가 공격당했습니다.");
+		if(damage <= 0) { 
+			this.dead(); 
+		} 
 		System.out.println(this.name + "의 남은 생명력 : " + this.life);
 	}
 
 	@Override
-	public void attack(Hurtable enemy) {
+	public void attack(Dieable enemy) {
 		enemy.attacked(damage);
 		if(enemy instanceof MinionCard) {
-			this.life -= ((MinionCard) enemy).getDamage();
+			this.attacked(((MinionCard) enemy).getDamage());
 		}
 		System.out.println(this.name + "가 공격을 시도했습니다.");
 	}
 	
 
 	@Override
-	public void die() {
+	public void dead() {
 		super.destoryCard();
 		System.out.println(this.name + " 카드는 파괴되었습니다.");
 	}
-	
 
+	@Override
+	public void heal(int heal) {
+		this.life += heal;
+	}
+	
+	
 }
